@@ -47,9 +47,10 @@ sudo apt-get install python3-dev libpcap-dev
 ### Installation
 
 1. Clone the repository:
-bash
-git clone https://github.com/yourusername/network_scanner.git
+```bash
+git clone https://github.com/berkaysoylu/network_scanner.git
 cd network_scanner
+```
 
 2. Create and activate a virtual environment (recommended):
 ```bash
