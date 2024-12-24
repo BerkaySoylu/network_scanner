@@ -54,7 +54,7 @@ cd network_scanner
 
 2. Create and activate a virtual environment (recommended):
 ```bash
-python -m venv venv
+python3 -m venv venv
 source venv/bin/activate  # On Linux/Mac
 ```
 
