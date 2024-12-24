@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "network-scanner"
+version = "0.0.6"
+description = "A comprehensive network scanning tool"
+authors = ["Berkay Soylu <soyluberkay14@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [
+    { include = "network_scanner", from = "src" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+scapy = "^2.5.0"
+asyncio = "^3.4.3"
+rich = "^13.7.0"
+pydantic = "^2.5.0"
+pydantic-settings = "^2.7.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
