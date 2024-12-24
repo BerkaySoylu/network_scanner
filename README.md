@@ -41,7 +41,7 @@ A powerful, asynchronous network scanning tool built in Python that supports mul
 Debian/Ubuntu
 ```bash
 sudo apt-get update
-sudo apt-get install python3-dev libpcap-dev
+sudo apt-get install python3-dev libpcap-dev python3.12-venv
 ```
 
 ### Installation
