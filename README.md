@@ -39,7 +39,7 @@ sudo yum install python3-devel libpcap-devel
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/network_scanner.git
+git clone https://github.com/berkaysoylu/network_scanner.git
 cd network_scanner
 ```
 
