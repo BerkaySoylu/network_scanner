@@ -1,54 +1,60 @@
-# Network Scanner
+ Network Scanner 🔍
 
-A powerful and flexible network scanning tool built in Python, supporting multiple scanning techniques and protocols.
+A powerful, asynchronous network scanning tool built in Python that supports multiple scanning techniques, OS fingerprinting, and service detection. Built with modern async/await patterns and comprehensive error handling.
 
-## Features
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
+[![Poetry](https://img.shields.io/badge/poetry-package-blueviolet)](https://python-poetry.org/)
 
-- Multiple scanning techniques:
-  - TCP Connect Scan
-  - SYN Scan (stealth)
-  - UDP Scan
-- Host discovery
-- OS fingerprinting
-- Service version detection
-- PCAP capture support
-- Rate limiting and timing controls
-- Concurrent scanning
-- Rich console output
-- JSON/CSV export
+## ✨ Features
 
-## Installation
+- **Multiple Scanning Techniques**
+  - TCP Connect Scan (full handshake)
+  - SYN Scan (stealth scanning)
+  - UDP Scan (with ICMP handling)
+
+- **Advanced Detection**
+  - OS Fingerprinting
+  - Service Version Detection
+  - Host Discovery
+
+- **Performance & Control**
+  - Asynchronous Operation
+  - Rate Limiting
+  - Configurable Timing Templates
+  - Concurrent Scanning
+
+- **Monitoring & Output**
+  - PCAP Capture Support
+  - Rich Console Output
+  - JSON/CSV Export
+  - Detailed Logging
+
+## 🚀 Quick Start
 
 ### Prerequisites
 
-- Python 3.8 or higher
-- libpcap development files (for packet capture)
+- Python 3.9 or higher
+- libpcap development files
+- Root/Administrator privileges (for SYN/UDP scans)
 
-On Debian/Ubuntu:
+Debian/Ubuntu
 ```bash
 sudo apt-get update
 sudo apt-get install python3-dev libpcap-dev
 ```
 
-On RHEL/CentOS:
-```bash
-sudo yum install python3-devel libpcap-devel
-```
-
-### Installing the Package
+### Installation
 
 1. Clone the repository:
-```bash
-git clone https://github.com/berkaysoylu/network_scanner.git
+bash
+git clone https://github.com/yourusername/network_scanner.git
 cd network_scanner
-```
 
 2. Create and activate a virtual environment (recommended):
 ```bash
 python -m venv venv
 source venv/bin/activate  # On Linux/Mac
-# or
-.\venv\Scripts\activate  # On Windows
 ```
 
 3. Install with Poetry:
@@ -57,7 +63,12 @@ pip install poetry
 poetry install
 ```
 
-## Usage
+## 📖 Usage
+
+```bash
+# Show help
+poetry run python src/main.py -h
+```
 
 ### Basic Scanning
 
@@ -94,14 +105,52 @@ poetry run python src/main.py example.com -p 80,443 -o results.json
 poetry run python src/main.py example.com -p 80,443 --pcap ./captures
 ```
 
-### Timing Templates
+## ⚙️ Command Line Options
 
-- `paranoid`: Very slow (0.5 packets/sec)
-- `sneaky`: Slow (1 packet/sec)
-- `polite`: Normal (10 packets/sec)
-- `normal`: Default (100 packets/sec)
-- `aggressive`: Fast (500 packets/sec)
-- `insane`: Very fast (1000 packets/sec)
+```
+TARGET
+    🎯 Target IP address or hostname
+
+-p, --ports <port-range>
+    🔍 Port(s) to scan (e.g., 80,443 or 20-25)
+    Default: 1-1024
+
+-t, --type <scan-type>
+    🔧 Scan type (tcp/syn/udp)
+    Default: tcp
+
+--timing <timing-template>
+    ⚡ Timing template
+    Options: paranoid/sneaky/polite/normal/aggressive/insane
+    Default: normal
+
+-o, --output <file>
+    💾 Output file path
+
+--format <format>
+    📊 Output format (text/json/csv)
+    Default: text
+
+--pcap <directory>
+    📦 Enable PCAP capture and specify directory
+
+-v, --verbose
+    🔊 Enable verbose output
+
+--debug
+    🐛 Enable debug mode
+```
+
+## 🎯 Timing Templates
+
+| Template   | Description                    | Use Case                |
+|------------|--------------------------------|------------------------|
+| paranoid   | Very slow scanning            | IDS Evasion            |
+| sneaky     | Slow scanning                 | IDS Evasion            |
+| polite     | Normal, conservative scanning  | Production systems     |
+| normal     | Default balanced scanning      | General use           |
+| aggressive | Fast scanning                  | Lab environments       |
+| insane     | Fastest scanning              | Local network only     |
 
 ## Configuration
 
@@ -121,14 +170,14 @@ poetry run python src/main.py example.com \
     --debug
 ```
 
-## Security Considerations
+## 🛡️ Security Considerations
 
 - Always obtain permission before scanning networks
 - Some scan types (SYN, UDP) require root/administrator privileges
 - Be aware of local laws and regulations regarding port scanning
 - Use appropriate timing templates to avoid detection/blocking
 
-## Contributing
+## 🤝 Contributing
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/amazing-feature`)
@@ -136,7 +185,7 @@ poetry run python src/main.py example.com \
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## License
+## 📝 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
