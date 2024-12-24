@@ -171,6 +171,39 @@ poetry run python src/network_scanner/main.py example.com \
     --debug
 ```
 
+## 🐳 Docker Usage
+
+### Running with Docker Compose
+
+1. Build the container:
+```bash:docker-compose.yml
+docker-compose build
+```
+
+2. Run a scan:
+```bash
+# Basic TCP scan
+docker-compose run --rm network-scanner example.com -p 80,443
+
+# SYN scan (stealth scan)
+docker-compose run --rm network-scanner example.com -t syn -p 80,443
+
+# Full scan with PCAP capture
+docker-compose run --rm network-scanner example.com -p 1-1000 --pcap /app/pcap
+
+# Save results to JSON
+docker-compose run --rm network-scanner example.com -p 80,443 -o /app/results/scan.json
+```
+
+### Volumes
+- `./results`: Scan results are saved here
+- `./pcap`: PCAP capture files are saved here
+
+### Environment Variables
+- `SCANNER_DEBUG`: Enable debug output (true/false)
+- `SCANNER_VERBOSE`: Enable verbose output (true/false)
+
+
 ## 🛡️ Security Considerations
 
 - Always obtain permission before scanning networks

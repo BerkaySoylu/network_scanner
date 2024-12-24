@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  network-scanner:
+    build: .
+    network_mode: "host"  # Required for network scanning
+    cap_add:
+      - NET_ADMIN      # Required for raw socket operations
+      - NET_RAW        # Required for raw socket operations
+      - SYS_ADMIN      # Required for some system operations
+    privileged: true   # Give extended privileges to container
+    volumes:
+      - ./results:/app/results  # Mount directory for scan results
+      - ./pcap:/app/pcap       # Mount directory for PCAP files
+    environment:
+      - SCANNER_DEBUG=false
+      - SCANNER_VERBOSE=true
