@@ -68,42 +68,42 @@ poetry install
 
 ```bash
 # Show help
-poetry run python src/main.py -h
+poetry run python src/network_scanner/main.py -h
 ```
 
 ### Basic Scanning
 
 ```bash
 # Basic TCP scan
-poetry run python src/main.py example.com -p 80,443
+poetry run python src/network_scanner/main.py example.com -p 80,443
 
 # Scan multiple ports
-poetry run python src/main.py 192.168.1.1 -p 22,80,443,3306
+poetry run python src/network_scanner/main.py 192.168.1.1 -p 22,80,443,3306
 
 # Scan a CIDR range
-poetry run python src/main.py 192.168.1.0/24 -p 80
+poetry run python src/network_scanner/main.py 192.168.1.0/24 -p 80
 
 # Enable verbose output
-poetry run python src/main.py example.com -p 80,443 -v
+poetry run python src/network_scanner/  main.py example.com -p 80,443 -v
 ```
 
 ### Advanced Scanning
 
 ```bash
 # SYN scan (requires root/sudo)
-sudo poetry run python src/main.py example.com -s syn -p 80,443
+sudo poetry run python src/network_scanner/main.py example.com -s syn -p 80,443
 
 # UDP scan
-poetry run python src/main.py example.com -s udp -p 53,161
+poetry run python src/network_scanner/main.py example.com -s udp -p 53,161
 
 # Aggressive timing
-poetry run python src/main.py example.com --timing aggressive -p 1-1000
+poetry run python src/network_scanner/main.py example.com --timing aggressive -p 1-1000
 
 # Save results
-poetry run python src/main.py example.com -p 80,443 -o results.json
+poetry run python src/network_scanner/main.py example.com -p 80,443 -o results.json
 
 # Enable packet capture
-poetry run python src/main.py example.com -p 80,443 --pcap ./captures
+poetry run python src/network_scanner/main.py example.com -p 80,443 --pcap ./captures
 ```
 
 ## ⚙️ Command Line Options
@@ -163,7 +163,7 @@ export SCANNER_DEFAULT_TIMEOUT=2.0
 export SCANNER_MAX_CONCURRENT_SCANS=100
 
 # Command line options
-poetry run python src/main.py example.com \
+poetry run python src/network_scanner/main.py example.com \
     -p 80,443 \
     --timing normal \
     --output results.json \
